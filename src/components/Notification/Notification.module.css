@@ -1,0 +1,20 @@
+.message {
+  margin: 0;
+  padding: 1.25rem 1.35rem;
+  border-radius: 1.25rem;
+  text-align: center;
+  color: #7a6455;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 244, 0.7), rgba(247, 235, 224, 0.9)),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(120, 72, 36, 0.035),
+      rgba(120, 72, 36, 0.035) 8px,
+      transparent 8px,
+      transparent 16px
+    );
+  border: 1px dashed rgba(120, 72, 36, 0.22);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}

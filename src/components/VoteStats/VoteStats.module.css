@@ -1,0 +1,143 @@
+.container {
+  padding: 1.35rem 1.25rem 1.25rem;
+  border-radius: 1.35rem;
+  background: rgba(255, 250, 244, 0.88);
+  border: 1px solid rgba(120, 72, 36, 0.1);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 16px 36px rgba(88, 49, 21, 0.07);
+  backdrop-filter: blur(8px);
+  animation: pop 0.35s ease both;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+.heading {
+  margin: 0;
+  color: #2b1a10;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin: 0;
+  color: #8a7161;
+  font-size: 0.9rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.stat {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  border-radius: 1rem;
+  background: #fff;
+  border: 1px solid rgba(120, 72, 36, 0.08);
+  color: #6d5342;
+  font-size: 0.95rem;
+}
+
+.stat strong {
+  color: #2b1a10;
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.good {
+  box-shadow: inset 3px 0 0 #3f8f6b;
+}
+
+.neutral {
+  box-shadow: inset 3px 0 0 #d39a45;
+}
+
+.bad {
+  box-shadow: inset 3px 0 0 #c45d4a;
+}
+
+.total {
+  box-shadow: inset 3px 0 0 #7a4a24;
+}
+
+.positive {
+  margin-top: 0.85rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background:
+    linear-gradient(180deg, rgba(63, 143, 107, 0.08), rgba(63, 143, 107, 0.03)),
+    #fff;
+  border: 1px solid rgba(63, 143, 107, 0.14);
+}
+
+.positiveMeta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.positive .stat {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.positiveHint {
+  color: #7f9488;
+  font-size: 0.82rem;
+}
+
+.progressTrack {
+  width: 100%;
+  height: 0.7rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(63, 143, 107, 0.12);
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #4ea57a 0%, #2f7356 100%);
+  transition: width 0.35s ease;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(0.4rem) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
