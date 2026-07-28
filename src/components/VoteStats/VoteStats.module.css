@@ -46,6 +46,7 @@
   border-radius: 1rem;
   background: var(--color-surface);
   border: 1px solid var(--border-mocha-faint);
+  border-left-width: 3px;
   color: var(--color-ink-muted);
   font-size: 0.95rem;
 }
@@ -58,19 +59,19 @@
 }
 
 .good {
-  box-shadow: inset 3px 0 0 var(--color-good);
+  border-left-color: var(--color-good);
 }
 
 .neutral {
-  box-shadow: inset 3px 0 0 var(--color-accent);
+  border-left-color: var(--color-accent);
 }
 
 .bad {
-  box-shadow: inset 3px 0 0 var(--color-bad);
+  border-left-color: var(--color-bad);
 }
 
 .total {
-  box-shadow: inset 3px 0 0 var(--color-total);
+  border-left-color: var(--color-total);
 }
 
 .positive {
@@ -99,7 +100,6 @@
   padding: 0;
   border: 0;
   background: transparent;
-  box-shadow: none;
 }
 
 .positiveHint {
@@ -107,42 +107,24 @@
   font-size: 0.82rem;
 }
 
-.progress {
-  display: block;
+.progressTrack {
   width: 100%;
   height: 0.7rem;
-  border: 0;
-  border-radius: 999px;
-  background: rgba(var(--color-good-rgb), 0.12);
   overflow: hidden;
-}
-
-.progress::-webkit-meter-inner-element {
-  display: block;
-}
-
-.progress::-webkit-meter-bar {
+  border-radius: 999px;
   background: rgba(var(--color-good-rgb), 0.12);
-  border: 0;
-  border-radius: 999px;
 }
 
-.progress::-webkit-meter-optimum-value {
+.progressFill {
+  width: var(--positive-rate, 0%);
+  height: 100%;
+  border-radius: inherit;
   background: linear-gradient(
     90deg,
     var(--color-good-bright) 0%,
     var(--color-good-deep) 100%
   );
-  border-radius: 999px;
-}
-
-.progress::-moz-meter-bar {
-  background: linear-gradient(
-    90deg,
-    var(--color-good-bright) 0%,
-    var(--color-good-deep) 100%
-  );
-  border-radius: 999px;
+  transition: width 0.35s ease;
 }
 
 @keyframes pop {

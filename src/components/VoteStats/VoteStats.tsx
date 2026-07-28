@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import type { Votes } from "../../types/votes";
 import css from "./VoteStats.module.css";
 
@@ -41,15 +42,21 @@ export default function VoteStats({
           </p>
           <span className={css.positiveHint}>share of good votes</span>
         </div>
-        <meter
-          className={css.progress}
-          min={0}
-          max={100}
-          value={positiveRate}
+        <div
+          className={css.progressTrack}
+          role="progressbar"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={positiveRate}
           aria-label="Positive feedback rate"
+          style={
+            {
+              "--positive-rate": `${positiveRate}%`,
+            } as CSSProperties
+          }
         >
-          {positiveRate}%
-        </meter>
+          <div className={css.progressFill} />
+        </div>
       </div>
     </div>
   );
