@@ -7,46 +7,37 @@ interface VoteOptionsProps {
   canReset: boolean;
 }
 
+const VOTE_BUTTONS = [
+  { type: "good", label: "Good", className: css.good },
+  { type: "neutral", label: "Neutral", className: css.neutral },
+  { type: "bad", label: "Bad", className: css.bad },
+] as const satisfies ReadonlyArray<{
+  type: VoteType;
+  label: string;
+  className: string;
+}>;
+
 export default function VoteOptions({
   onVote,
   onReset,
   canReset,
 }: VoteOptionsProps) {
-  const handleGoodVote = () => {
-    onVote("good");
-  };
-
-  const handleNeutralVote = () => {
-    onVote("neutral");
-  };
-
-  const handleBadVote = () => {
-    onVote("bad");
+  const voteHandler = (type: VoteType) => () => {
+    onVote(type);
   };
 
   return (
     <div className={css.container}>
-      <button
-        type="button"
-        className={`${css.button} ${css.good}`}
-        onClick={handleGoodVote}
-      >
-        Good
-      </button>
-      <button
-        type="button"
-        className={`${css.button} ${css.neutral}`}
-        onClick={handleNeutralVote}
-      >
-        Neutral
-      </button>
-      <button
-        type="button"
-        className={`${css.button} ${css.bad}`}
-        onClick={handleBadVote}
-      >
-        Bad
-      </button>
+      {VOTE_BUTTONS.map(({ type, label, className }) => (
+        <button
+          key={type}
+          type="button"
+          className={`${css.button} ${className}`}
+          onClick={voteHandler(type)}
+        >
+          {label}
+        </button>
+      ))}
       {canReset && (
         <button
           type="button"

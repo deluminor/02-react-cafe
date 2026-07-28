@@ -41,7 +41,7 @@ export default function VoteStats({
     );
 
     return () => {
-      animation.commitStyles();
+      if (fill.isConnected) animation.commitStyles();
       animation.cancel();
     };
   }, [positiveRate]);
