@@ -10,7 +10,7 @@
   border-radius: 999px;
   min-height: 2.85rem;
   padding: 0.8rem 1.25rem;
-  color: #fffaf4;
+  color: var(--color-cream);
   font: inherit;
   font-size: 0.95rem;
   font-weight: 650;
@@ -32,35 +32,47 @@
 }
 
 .button:focus-visible {
-  outline: 3px solid rgba(166, 94, 42, 0.35);
+  outline: 3px solid var(--focus-ring);
   outline-offset: 3px;
 }
 
 .good {
-  background: linear-gradient(180deg, #3f8f6b 0%, #2f7356 100%);
-  box-shadow: 0 10px 20px rgba(47, 115, 86, 0.22);
+  background: linear-gradient(
+    180deg,
+    var(--color-good) 0%,
+    var(--color-good-deep) 100%
+  );
+  box-shadow: var(--shadow-good);
 }
 
 .neutral {
-  background: linear-gradient(180deg, #d39a45 0%, #b87c2c 100%);
-  box-shadow: 0 10px 20px rgba(184, 124, 44, 0.22);
+  background: linear-gradient(
+    180deg,
+    var(--color-accent) 0%,
+    var(--color-accent-deep) 100%
+  );
+  box-shadow: var(--shadow-neutral);
 }
 
 .bad {
-  background: linear-gradient(180deg, #c45d4a 0%, #a84636 100%);
-  box-shadow: 0 10px 20px rgba(168, 70, 54, 0.22);
+  background: linear-gradient(
+    180deg,
+    var(--color-bad) 0%,
+    var(--color-bad-deep) 100%
+  );
+  box-shadow: var(--shadow-bad);
 }
 
 .reset {
   margin-left: auto;
-  color: #8a3b2f;
-  background: rgba(196, 93, 74, 0.12);
+  color: var(--color-bad-text);
+  background: rgba(var(--color-bad-rgb), 0.12);
   box-shadow: none;
-  border: 1px solid rgba(168, 70, 54, 0.2);
+  border: 1px solid var(--border-bad-soft);
 }
 
 .reset:hover {
-  background: rgba(196, 93, 74, 0.18);
+  background: rgba(var(--color-bad-rgb), 0.18);
   filter: none;
 }
 

@@ -12,26 +12,38 @@ export default function VoteOptions({
   onReset,
   canReset,
 }: VoteOptionsProps) {
+  const handleGoodVote = () => {
+    onVote("good");
+  };
+
+  const handleNeutralVote = () => {
+    onVote("neutral");
+  };
+
+  const handleBadVote = () => {
+    onVote("bad");
+  };
+
   return (
     <div className={css.container}>
       <button
         type="button"
         className={`${css.button} ${css.good}`}
-        onClick={() => onVote("good")}
+        onClick={handleGoodVote}
       >
         Good
       </button>
       <button
         type="button"
         className={`${css.button} ${css.neutral}`}
-        onClick={() => onVote("neutral")}
+        onClick={handleNeutralVote}
       >
         Neutral
       </button>
       <button
         type="button"
         className={`${css.button} ${css.bad}`}
-        onClick={() => onVote("bad")}
+        onClick={handleBadVote}
       >
         Bad
       </button>

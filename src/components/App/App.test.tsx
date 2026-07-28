@@ -55,10 +55,7 @@ describe("App feedback widget", () => {
 
     expect(getStatValue("Total")).toBe("5");
     expect(getStatValue("Positive")).toBe("40%");
-    expect(screen.getByRole("progressbar")).toHaveAttribute(
-      "aria-valuenow",
-      "40",
-    );
+    expect(screen.getByRole("meter")).toHaveAttribute("value", "40");
   });
 
   it("shows Reset after first vote and clears state on Reset", async () => {
