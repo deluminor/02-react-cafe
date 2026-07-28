@@ -1,61 +1,61 @@
 # Sip Happens Café
 
-Віджет відгуків для кавʼярні на **React + TypeScript**.  
-Користувач обирає `Good` / `Neutral` / `Bad`, а застосунок миттєво показує статистику: кількість голосів, загальну суму та відсоток позитивних відгуків.
+A café feedback widget built with **React + TypeScript**.  
+Users choose `Good` / `Neutral` / `Bad`, and the app instantly shows live stats: votes per category, total count, and positive feedback rate.
 
-**Репозиторій:** [02-react-cafe](https://github.com/deluminor/02-react-cafe)
-
----
-
-## Що вміє
-
-- три варіанти оцінки: Good, Neutral, Bad
-- live-статистика після кожного голосу
-- обчислення `totalVotes` і `positiveRate` на льоту
-- умовний рендеринг: `Notification` ↔ `VoteStats`
-- кнопка `Reset` зʼявляється лише коли вже є голоси
-- адаптивний UI з теплою кавʼярнею-палітрою
+**Repository:** [02-react-cafe](https://github.com/deluminor/02-react-cafe)
 
 ---
 
-## Стек
+## Features
 
-| Технологія               | Навіщо                       |
-| ------------------------ | ---------------------------- |
-| React 19                 | UI і локальний стан          |
-| TypeScript               | типізація пропсів і стану    |
-| Vite                     | збірка й dev-сервер          |
-| CSS Modules              | ізольовані стилі компонентів |
-| modern-normalize         | уніфікація базових стилів    |
-| Vitest + Testing Library | поведінкові тести            |
-| Prettier + Oxlint        | формат і lint                |
-| Husky + lint-staged      | локальні quality gates       |
-| GitHub Actions           | CI на push / PR              |
+- three rating options: Good, Neutral, Bad
+- live statistics after every vote
+- `totalVotes` and `positiveRate` computed on the fly
+- conditional rendering: `Notification` ↔ `VoteStats`
+- `Reset` button appears only when there is at least one vote
+- responsive UI with a warm café-inspired palette
 
 ---
 
-## Архітектура
+## Stack
 
-Стан піднято в `App` — це єдине джерело правди про голоси.
+| Technology               | Purpose                 |
+| ------------------------ | ----------------------- |
+| React 19                 | UI and local state      |
+| TypeScript               | typed props and state   |
+| Vite                     | bundling and dev server |
+| CSS Modules              | scoped component styles |
+| modern-normalize         | consistent base styles  |
+| Vitest + Testing Library | behavior tests          |
+| Prettier + Oxlint        | formatting and linting  |
+| Husky + lint-staged      | local quality gates     |
+| GitHub Actions           | CI on push / PR         |
+
+---
+
+## Architecture
+
+State is lifted to `App` — the single source of truth for votes.
 
 ```
 App
 ├── CafeInfo
 ├── VoteOptions   ← onVote / onReset / canReset
-└── VoteStats | Notification   ← залежно від totalVotes
+└── VoteStats | Notification   ← depending on totalVotes
 ```
 
-- `votes` живе в `App`
-- діти отримують дані через пропси
-- події піднімаються вгору через колбеки
-- `totalVotes` і `positiveRate` обчислюються при рендері, не зберігаються в `useState`
+- `votes` lives in `App`
+- children receive data through props
+- events bubble up through callbacks
+- `totalVotes` and `positiveRate` are derived during render and are not stored in `useState`
 
-Спільні типи: `src/types/votes.ts`  
-Локальні props-інтерфейси: у файлах відповідних компонентів
+Shared types: `src/types/votes.ts`  
+Local props interfaces: declared in the corresponding component files
 
 ---
 
-## Швидкий старт
+## Quick start
 
 ```bash
 git clone git@github.com:deluminor/02-react-cafe.git
@@ -64,28 +64,28 @@ npm install
 npm run dev
 ```
 
-Відкрий [http://localhost:5173](http://localhost:5173)
+Open [http://localhost:5173](http://localhost:5173)
 
 ---
 
-## Скрипти
+## Scripts
 
-| Команда                | Опис                                     |
+| Command                | Description                              |
 | ---------------------- | ---------------------------------------- |
-| `npm run dev`          | локальна розробка                        |
-| `npm run build`        | production-збірка                        |
-| `npm run preview`      | превʼю зібраного білду                   |
+| `npm run dev`          | local development                        |
+| `npm run build`        | production build                         |
+| `npm run preview`      | preview the production build             |
 | `npm run lint`         | Oxlint                                   |
 | `npm run format`       | Prettier write                           |
 | `npm run format:check` | Prettier check                           |
 | `npm run typecheck`    | TypeScript                               |
 | `npm test`             | Vitest                                   |
-| `npm run test:watch`   | Vitest у watch-режимі                    |
+| `npm run test:watch`   | Vitest watch mode                        |
 | `npm run check`        | format + lint + typecheck + test + build |
 
 ---
 
-## Структура
+## Project structure
 
 ```text
 src/
@@ -103,20 +103,20 @@ src/
 └── main.tsx
 ```
 
-Кожен компонент — окрема папка з парою:
+Each component lives in its own folder with:
 
 - `ComponentName.tsx`
 - `ComponentName.module.css`
 
-Експорт компонентів — через `export default`.
+Components are exported with `export default`.
 
 ---
 
-## Якість коду
+## Code quality
 
-Перед кожним комітом і пушем проганяється повний `npm run check`.
+Every commit and push runs the full `npm run check`.
 
-CI (`.github/workflows/ci.yml`) перевіряє те саме на кожному push у `main` і на pull request:
+CI (`.github/workflows/ci.yml`) runs the same checks on every push to `main` and on pull requests:
 
 1. formatting
 2. lint
@@ -126,15 +126,15 @@ CI (`.github/workflows/ci.yml`) перевіряє те саме на кожно
 
 ---
 
-## Критерії ДЗ
+## Homework checklist
 
-Реалізовано кроки 1–8:
+Steps 1–8 are implemented:
 
-1. `App` як контейнер
+1. `App` as the container
 2. `CafeInfo`
-3. стан `votes` + типи `Votes` / `VoteType`
+3. `votes` state + `Votes` / `VoteType`
 4. `VoteOptions`
 5. `VoteStats`
-6. обчислення статистики
-7. `Notification` + умовний рендеринг
-8. умовний `Reset` через `canReset`
+6. statistics calculation
+7. `Notification` + conditional rendering
+8. conditional `Reset` via `canReset`
