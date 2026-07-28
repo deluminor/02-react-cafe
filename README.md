@@ -3,8 +3,6 @@
 A café feedback widget built with **React + TypeScript**.  
 Users choose `Good` / `Neutral` / `Bad`, and the app instantly shows live stats: votes per category, total count, and positive feedback rate.
 
-**Repository:** [02-react-cafe](https://github.com/deluminor/02-react-cafe)
-
 ---
 
 ## Features
