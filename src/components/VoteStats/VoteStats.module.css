@@ -116,7 +116,7 @@
 }
 
 .progressFill {
-  width: var(--positive-rate, 0%);
+  width: 0%;
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(
@@ -124,7 +124,6 @@
     var(--color-good-bright) 0%,
     var(--color-good-deep) 100%
   );
-  transition: width 0.35s ease;
 }
 
 @keyframes pop {

@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import { useEffect, useRef } from "react";
 import type { Votes } from "../../types/votes";
 import css from "./VoteStats.module.css";
 
@@ -13,6 +13,39 @@ export default function VoteStats({
   totalVotes,
   positiveRate,
 }: VoteStatsProps) {
+  const fillRef = useRef<HTMLDivElement>(null);
+  const previousRateRef = useRef(0);
+
+  useEffect(() => {
+    const fill = fillRef.current;
+
+    if (!fill) return;
+
+    const previousRate = previousRateRef.current;
+    previousRateRef.current = positiveRate;
+
+    const nextWidth = `${positiveRate}%`;
+
+    if (typeof fill.animate !== "function") {
+      fill.style.width = nextWidth;
+      return;
+    }
+
+    const animation = fill.animate(
+      [{ width: `${previousRate}%` }, { width: nextWidth }],
+      {
+        duration: 350,
+        easing: "ease",
+        fill: "forwards",
+      },
+    );
+
+    return () => {
+      animation.commitStyles();
+      animation.cancel();
+    };
+  }, [positiveRate]);
+
   return (
     <div className={css.container}>
       <div className={css.header}>
@@ -49,13 +82,8 @@ export default function VoteStats({
           aria-valuemax={100}
           aria-valuenow={positiveRate}
           aria-label="Positive feedback rate"
-          style={
-            {
-              "--positive-rate": `${positiveRate}%`,
-            } as CSSProperties
-          }
         >
-          <div className={css.progressFill} />
+          <div className={css.progressFill} ref={fillRef} />
         </div>
       </div>
     </div>
