@@ -23,7 +23,7 @@ export default function App() {
   };
 
   const resetVotes = () => {
-    setVotes(initialVotes);
+    setVotes({ good: 0, neutral: 0, bad: 0 });
   };
 
   const totalVotes = votes.good + votes.neutral + votes.bad;

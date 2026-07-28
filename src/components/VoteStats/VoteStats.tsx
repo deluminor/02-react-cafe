@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import type { Votes } from "../../types/votes";
 import css from "./VoteStats.module.css";
 
@@ -48,11 +49,9 @@ export default function VoteStats({
           aria-valuemax={100}
           aria-valuenow={positiveRate}
           aria-label="Positive feedback rate"
+          style={{ "--positive-rate": `${positiveRate}%` } as CSSProperties}
         >
-          <div
-            className={css.progressFill}
-            style={{ width: `${positiveRate}%` }}
-          />
+          <div className={css.progressFill} />
         </div>
       </div>
     </div>

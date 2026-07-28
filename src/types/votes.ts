@@ -1,7 +1,7 @@
 export interface Votes {
-  good: number;
-  neutral: number;
-  bad: number;
+  readonly good: number;
+  readonly neutral: number;
+  readonly bad: number;
 }
 
 export type VoteType = "good" | "neutral" | "bad";
