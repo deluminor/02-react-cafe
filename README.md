@@ -121,18 +121,3 @@ CI (`.github/workflows/ci.yml`) runs the same checks on every push to `main` and
 3. typecheck
 4. tests
 5. build
-
----
-
-## Homework checklist
-
-Steps 1–8 are implemented:
-
-1. `App` as the container
-2. `CafeInfo`
-3. `votes` state + `Votes` / `VoteType`
-4. `VoteOptions`
-5. `VoteStats`
-6. statistics calculation
-7. `Notification` + conditional rendering
-8. conditional `Reset` via `canReset`
